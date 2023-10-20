@@ -1,25 +1,15 @@
 import express from 'express';
-import { generatePreview } from './linkPreviewGenerator.js';
 const app = express();
 const port = 3500;
 import cors from 'cors';
-// import puppeteer from "puppeteer-extra";
-// import pluginStealth from "puppeteer-extra-plugin-stealth";
 import ogs from 'open-graph-scraper';
 
 
 
 
-// events.setMaxListeners(300);
 
 app.use(cors());
 app.use(express.json());
-// puppeteer.use(pluginStealth());
-// const params = {
-//   headless: "new",
-//   args: ['--disable-gpu, --no-sandbox', '--disable-setuid-sandbox'],
-//   executablePath: puppeteer.executablePath(),
-// };
 
 
 
@@ -63,7 +53,6 @@ const failed = result.filter(o => o.status === "rejected");
 
  async function processLink(url) {
   console.log("request for link: " + url);
-  // let browser = await puppeteer.launch(params);
   const ogsOptions = {
     url: url,
     headers: { "user-agent": "Googlebot/2.1 (+http://www.google.com/bot.html)" },
@@ -87,27 +76,9 @@ const failed = result.filter(o => o.status === "rejected");
 
   } catch (error) {
     console.error("Error processing link");
-    console.log("Moving to fallback processor GeneratePreview...");
-    // let pages = browser.pages();
-    // while (pages.length == 10) {
-    //   pages = browser.pages();
-    //   module.exports.delay(2000);
-    // }try{
-    // const generatePreviewResponse = await generatePreview(url, browser);
-    //   if (generatePreviewResponse) {
-    //     console.log("link succesfully processed!");
-    //     return generatePreviewResponse;
-    //   }
-    // } catch (error) {
-
-    //   console.error("Fatal error!Link absolutely cannot be processed: " + url);
-    //   console.error(err);
-     
-    // }
   }
   finally{
-    global.gc();
-    console.error("=============================END==========================================");
+    console.log("=============================END==========================================");
   }
 
   
@@ -119,9 +90,6 @@ const getDomainRegex = (url) => {
   return matches && matches[1];  // domain will be null if no match is found
 
 }
-
-
-
 
 
 process.on('SIGINT', function () {
