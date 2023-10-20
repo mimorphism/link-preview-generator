@@ -2,7 +2,7 @@
 An application that generates link preview from a URL
 
 
-**link-preview-generator** is an Express application built on top of [open-graph-scraper](https://github.com/jshemas/openGraphScraper)  that generates link preview from a url(via Open Graph,Twitter meta tags, and standard tags/properties that can be used to construct a preview)
+**link-preview-generator** is an [Express](https://expressjs.com/) application built on top of [open-graph-scraper](https://github.com/jshemas/openGraphScraper)  that generates link preview from a url(via Open Graph,Twitter meta tags, and standard tags/properties that can be used to construct a preview)
 
 ## Getting Started
 1. Install the npm dependencies
